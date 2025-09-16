@@ -23,6 +23,7 @@ body {
 header {
     height: 15%;
     width: 100%;
+    margin-bottom: 2%;
 }
 
 header .container {
@@ -34,4 +35,68 @@ header .container {
     align-items: center;
     font-family: var(--main-font);
     color: var(--text-color);
+}
+
+#image-container {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin-bottom: 3%;
+}
+
+#image-container .image-div {
+    height: 90%;
+    
+}
+
+.image-div img {
+    height: 100%;
+    box-shadow: 5px 5px 2px 2px rgb(86, 86, 83);
+    border-radius: 2%;
+    
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+#result-section {
+    height: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--main-font);
+    color: var(--text-color);
+    font-size: 20px;
+    gap: 12%;
+    margin-bottom: 2%;
+}
+
+#reset-auto-container {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+#reset-auto-container button {
+    height: 60%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--button-color);
+    color: rgb(255, 213, 0);
+    font-size: 15px;
+    font-family: var(--main-font);
+    box-shadow: 3px 3px 1px 1px rgb(86, 86, 83);
+
+}
+
+button:hover {
+    cursor: pointer;
 }
