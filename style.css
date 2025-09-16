@@ -4,3 +4,34 @@
     box-sizing: border-box;
 }
 
+:root {
+    --main-font : "Press Start 2P", cursive;
+    --secondary-font : "lato";
+    --backgroundColor : #E62727;
+    --button-color : #1E93AB;
+    --text-color : #DCDCDC;
+    --header-background: #F3F2EC;
+
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--backgroundColor);
+}
+
+header {
+    height: 15%;
+    width: 100%;
+}
+
+header .container {
+    height: 100%;
+    width: 100%;
+    background-color: var(--header-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--main-font);
+    color: var(--text-color);
+}
