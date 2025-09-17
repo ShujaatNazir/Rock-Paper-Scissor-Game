@@ -34,11 +34,11 @@ header .container {
     justify-content: center;
     align-items: center;
     font-family: var(--main-font);
-    color: var(--text-color);
+    color: #1c4c8f;
 }
 
 #image-container {
-    height: 35%;
+    height: 40%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -89,7 +89,7 @@ img:hover {
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
-    background-color: var(--button-color);
+    background-color: #1c4c8f;
     color: rgb(255, 213, 0);
     font-size: 15px;
     font-family: var(--main-font);
