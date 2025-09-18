@@ -1,11 +1,17 @@
-const score = {
+
+let finalScore = localStorage.getItem('score');
+
+const score = JSON.parse(finalScore) || {
     wins : 0,
     losses : 0,
     ties : 0,
-}
+};
 
+let displayScore = document.querySelector('#score');
 
-//* this function choses computer move
+displayScore.innerText = `Wins : ${score.wins} , Losses : ${score.losses} , Ties : ${score.ties}`;
+
+//* this function chooses computer's move
 function computerMove() {
     let computerMove = '';
     const randomNumber = Math.ceil(Math.random() * 3);
@@ -25,7 +31,7 @@ function computerMove() {
     return computerMove;
 }   
 
-//! this function evals the result 
+
 function result(userMove , computerMove) {
 
     if(userMove === computerMove) {
@@ -40,37 +46,20 @@ function result(userMove , computerMove) {
         return 'You Won';
     } else {
         score.losses = score.losses + 1;
-        return 'You Lost'
+        return 'You Lost';
     }
 }
 
 
-//* get the userMove based on the userClick
-    
-    const rockImage = document.querySelector('#Rock');
-    const paperImage = document.querySelector('#Paper');
-    const scissorImage = document.querySelector('#Scissor');
+function playGame(userMove) {
+    const moveOfComputer = computerMove();
+    const gameResult = result(userMove , moveOfComputer);
 
-    rockImage.addEventListener('click' , () => {
-        const userMove = 'Rock';
-        const moveOfComputer = computerMove();
-        const gameResult = result(userMove , moveOfComputer);
-        displayResult(userMove , moveOfComputer , gameResult);
-    });
+    localStorage.setItem('score', JSON.stringify(score));
 
-    paperImage.addEventListener('click' , () => {
-        const userMove = 'Paper';
-        const moveOfComputer = computerMove();
-        const gameResult = result(userMove , moveOfComputer);
-        displayResult(userMove , moveOfComputer , gameResult);
-    });
+    displayResult(userMove , moveOfComputer , gameResult);
+}
 
-    scissorImage.addEventListener('click' , () => {
-        const userMove = 'Scissor';
-        const moveOfComputer = computerMove();
-        const gameResult = result(userMove , moveOfComputer);
-        displayResult(userMove , moveOfComputer , gameResult);
-    });
 
 function displayResult(userMove , moveOfComputer , gameResult) {
 
@@ -80,24 +69,32 @@ function displayResult(userMove , moveOfComputer , gameResult) {
     let displayGameResult = document.querySelector('#gameResult');
     displayGameResult.innerText = `${gameResult}`;
 
+
     let displayScore = document.querySelector('#score');
     displayScore.innerText = `Wins : ${score.wins} , Losses : ${score.losses} , Ties : ${score.ties}`;
 }
 
-    //* resets the score of the game!!!
-    const reset_Button = document.querySelector('#resetButton');
-    reset_Button.addEventListener('click' , ()=> {
-        let displayScore = document.querySelector('#score');
-        score.wins = 0;
-        score.losses = 0;
-        score.ties = 0;
-        displayScore.innerHTML = `<h4>Wins : ${score.wins} , Losses : ${score.losses} , Ties : ${score.ties}</h4>`;
-    });
+//* Event listeners for the game buttons
+document.querySelector('#Rock').addEventListener('click' , () => {
+    playGame('Rock');
+});
 
+document.querySelector('#Paper').addEventListener('click' , () => {
+    playGame('Paper');
+});
 
-    // add local storage----->><<
+document.querySelector('#Scissor').addEventListener('click' , () => {
+    playGame('Scissor');
+});
 
+//* Resets the score of the game
+const reset_Button = document.querySelector('#resetButton');
+reset_Button.addEventListener('click' , () => {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.setItem('score' , JSON.stringify(score));
+    
 
-
-
-
+    displayScore.innerText = `Wins : ${score.wins} , Losses : ${score.losses} , Ties : ${score.ties}`;
+});
