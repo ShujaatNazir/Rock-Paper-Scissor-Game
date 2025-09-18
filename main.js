@@ -84,3 +84,20 @@ function displayResult(userMove , moveOfComputer , gameResult) {
     displayScore.innerText = `Wins : ${score.wins} , Losses : ${score.losses} , Ties : ${score.ties}`;
 }
 
+    //* resets the score of the game!!!
+    const reset_Button = document.querySelector('#resetButton');
+    reset_Button.addEventListener('click' , ()=> {
+        let displayScore = document.querySelector('#score');
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        displayScore.innerHTML = `<h4>Wins : ${score.wins} , Losses : ${score.losses} , Ties : ${score.ties}</h4>`;
+    });
+
+
+    // add local storage----->><<
+
+
+
+
+
